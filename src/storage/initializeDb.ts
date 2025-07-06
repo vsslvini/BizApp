@@ -17,7 +17,7 @@ export async function InitializeDb(database: SQLiteDatabase) {
           telefone TEXT,
           dividas TEXT
         );
-        CREATE TALBE IF NOT EXISTS venda (
+        CREATE TABLE IF NOT EXISTS venda (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           dataVenda TEXT NOT NULL,
           valorTOTAL REAL NOT NULL,
@@ -25,7 +25,7 @@ export async function InitializeDb(database: SQLiteDatabase) {
           clienteId INTEGER,
           FOREIGN KEY (clienteId) REFERENCES clientes(id)
         );
-        CREATE TABLE itensVenda (
+        CREATE TABLE IF NOT EXISTS itensVenda (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           vendaId INTEGER NOT NULL,
           produtoId INTEGER NOT NULL,
@@ -34,7 +34,7 @@ export async function InitializeDb(database: SQLiteDatabase) {
           FOREIGN KEY (vendaId) REFERENCES vendas(id),
           FOREIGN KEY (produtoId) REFERENCES produtos(id)
         );
-        CREATE TABLE dividasPendencias (
+        CREATE TABLE IF NOT EXISTS dividasPendencias (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           clienteId INTEGER NOT NULL,
           valor REAL NOT NULL,
