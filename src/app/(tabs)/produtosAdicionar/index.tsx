@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, Pressable, TouchableOpacity } from "react-native";
 import { useFocusEffect } from "expo-router";
 import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
@@ -7,12 +7,6 @@ import React from "react";
 export default function AdicionarProduto() {
     const { setHeaderOptions } = useHeaderOptions();
     const router = useRouter();
-
-    const handleTeste = () => {
-        router.push('/teste')
-    }
-
-
 
     useFocusEffect(
         React.useCallback(() => {
@@ -26,9 +20,12 @@ export default function AdicionarProduto() {
 
     return (
         <View style={styles.container}>
-            <Text>Tela de Adicionar Produto</Text>
+            <TouchableOpacity>
+                <Text>Tela de Adicionar Produto</Text>
+            </TouchableOpacity>
 
-            <Button title="Ir para Teste" onPress={handleTeste} />
+
+      
         </View>
     )
 }

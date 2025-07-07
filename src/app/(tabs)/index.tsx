@@ -18,6 +18,12 @@ export default function Index() {
         }, [])
     );
 
+
+
+    const handleTeste = () => {
+        router.push('/teste')
+    }
+
     const handleNextPage = () => {
         // Ao navegar, a próxima tela vai definir suas próprias opções de header.
         router.push('/produtosAdicionar/')
@@ -26,7 +32,9 @@ export default function Index() {
         <View style={styles.container}>
             <Text>Tela principal "Home"</Text>
             <Button title="Ir para Adicionar Produto" onPress={handleNextPage} />
+            <Button title="Ir para Teste" onPress={handleTeste} />
         </View>
+
     )
 }
 
