@@ -14,8 +14,9 @@ export default function AdicionarProduto() {
             setHeaderOptions({
                 title: "Novo Produto",
                 subTitleConfirm: false,
-                gradientColors: ['#9533E6', '#BE185E'],
-                nextPage: false,
+                nameIcon: "plus",
+                gradientColors: ['#5046E5', '#7E23CF'],
+                nextPage: true,
             });
         }, [])
     );
@@ -27,7 +28,7 @@ export default function AdicionarProduto() {
             </TouchableOpacity>
 
 
-      
+
         </View>
     )
 }

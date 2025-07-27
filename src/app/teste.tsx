@@ -10,8 +10,10 @@ export default function () {
 
     useFocusEffect(React.useCallback(() => {
         setHeaderOptions({
-            title: "Página de teste geral",
-            gradientColors: ['#2563EB', '#4338CA']
+            title: "Teste geral",
+            subTitleConfirm: false,
+            gradientColors: ['#2563EB', '#4338CA'],
+            nextPage: true,
         })
     }, []
     ))

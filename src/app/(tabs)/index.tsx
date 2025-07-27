@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import { useRouter, useFocusEffect } from "expo-router";
 import { useHeaderOptions } from "@/contexts/contextCustomHeader";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Index() {
     const router = useRouter();
@@ -12,13 +12,14 @@ export default function Index() {
         React.useCallback(() => {
             // Define as opções do header para ESTA tela
             setHeaderOptions({
-                title: "Início",
+                title: "BizApp",
                 gradientColors: ['#2563EB', '#4338CA'] as const, // Tema Azul
+                nameIcon: "plus",
+                nextPage: true,
+                routerHeaderOptions: handleTeste
             });
         }, [])
     );
-
-
 
     const handleTeste = () => {
         router.push('/teste')
@@ -28,9 +29,11 @@ export default function Index() {
         // Ao navegar, a próxima tela vai definir suas próprias opções de header.
         router.push('/produtosAdicionar/')
     }
+
+
     return (
         <View style={styles.container}>
-            <Text>Tela principal "Home"</Text>
+            <Text style={{ fontFamily: 'Roboto_700Bold' }}>Tela principal "Home"</Text>
             <Button title="Ir para Adicionar Produto" onPress={handleNextPage} />
             <Button title="Ir para Teste" onPress={handleTeste} />
         </View>

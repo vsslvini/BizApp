@@ -4,7 +4,7 @@ import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
 import React from "react";
 
-export default function AdicionarProduto() {
+export default function Estoque() {
     const { setHeaderOptions } = useHeaderOptions();
     const router = useRouter();
 
@@ -14,8 +14,9 @@ export default function AdicionarProduto() {
             setHeaderOptions({
                 title: "Novo Produto",
                 subTitleConfirm: false,
-                gradientColors: ['#9533E6', '#BE185E'],
-                nextPage: false,
+                nameIcon: "plus",
+                gradientColors: ['#5046E5', '#7E23CF'],
+                nextPage: true,
             });
         }, [])
     );
@@ -23,11 +24,11 @@ export default function AdicionarProduto() {
     return (
         <View style={styles.container}>
             <TouchableOpacity>
-                <Text>Tela de Adicionar Produto</Text>
+                <Text>Estoques dos produtos</Text>
             </TouchableOpacity>
 
 
-      
+
         </View>
     )
 }
