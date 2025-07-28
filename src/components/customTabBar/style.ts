@@ -1,26 +1,25 @@
 import { StyleSheet } from "react-native";
 
-const PRIMARY_COLOR = "#130057";
-const SECUNDARY_COLOR = "white";
+const PRIMARY_COLOR = "white";
+const SECUNDARY_COLOR = "#b8b4f7ff";
 
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         flexDirection: 'row',
         backgroundColor: PRIMARY_COLOR,
-        width: "80%",
+        width: "90%",
         alignSelf: 'center',
-        bottom: 40,
+        bottom: 20,
         borderRadius: 40,
         paddingHorizontal: 12,
         paddingVertical: 15,
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: "#000",
-        shadowOffset: {width: 0, height: 5},
+        shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 0.3,
         shadowRadius: 5,
-
     },
 
     tabItem: {
@@ -28,8 +27,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         height: 36,
-        paddingHorizontal: 14,
+        paddingHorizontal: 20,
         borderRadius: 30,
+        overflow: 'hidden', // Garante que o gradiente seja cortado pelas bordas
     },
 
     text: {
@@ -39,5 +39,4 @@ const styles = StyleSheet.create({
     },
 });
 
-
-export {styles, PRIMARY_COLOR, SECUNDARY_COLOR}
+export { styles, PRIMARY_COLOR, SECUNDARY_COLOR };

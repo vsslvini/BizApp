@@ -21,7 +21,8 @@
     "react-native": "0.79.4",
     "react-native-safe-area-context": "^5.5.0",
     "expo-splash-screen": "~0.30.10",
-    "react-native-reanimated": "~3.17.4"
+    "react-native-reanimated": "~3.17.4",
+    "@react-native-masked-view/masked-view": "0.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

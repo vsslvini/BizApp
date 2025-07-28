@@ -4,6 +4,8 @@ import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
 import React from "react";
 
+import { colors, gradientes } from "@/utils/colors";
+
 export default function AdicionarProduto() {
     const { setHeaderOptions } = useHeaderOptions();
     const router = useRouter();
@@ -14,7 +16,7 @@ export default function AdicionarProduto() {
             setHeaderOptions({
                 title: "Novo Produto",
                 subTitleConfirm: false,
-                gradientColors: ['#9533E6', '#BE185E'],
+                gradientColors: gradientes.g3,
                 nextPage: false,
             });
         }, [])

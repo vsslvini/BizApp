@@ -3,6 +3,9 @@ import { useRouter, useFocusEffect } from "expo-router";
 import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import React, { useEffect, useState } from "react";
 
+
+import { colors, gradientes } from "@/utils/colors";
+
 export default function Index() {
     const router = useRouter();
     const { setHeaderOptions } = useHeaderOptions();
@@ -13,7 +16,7 @@ export default function Index() {
             // Define as opções do header para ESTA tela
             setHeaderOptions({
                 title: "BizApp",
-                gradientColors: ['#2563EB', '#4338CA'] as const, // Tema Azul
+                gradientColors: gradientes.g1 , 
                 nameIcon: "plus",
                 nextPage: true,
                 routerHeaderOptions: handleTeste

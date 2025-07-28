@@ -18,9 +18,15 @@ export default function Layout() {
                 }}
 
             />
+            <Tabs.Screen name="estoque/index"
+                options={{
+                    title: "Produtos",
+                    tabBarIcon: ({ color }) => <FontAwesome name="square" size={28} color={color} />
+                }}
+            />
             <Tabs.Screen name="produtosAdicionar/index"
                 options={{
-                    title: "Produto",
+                    title: "Vendas",
                     tabBarIcon: ({ color }) => <FontAwesome name="shopping-cart" size={28} color={color} />
                 }}
             />
@@ -30,12 +36,7 @@ export default function Layout() {
                     tabBarIcon: ({ color }) => <FontAwesome name="user-circle" size={28} color={color} />
                 }}
             />
-            <Tabs.Screen name="estoque/index"
-                options={{
-                    title: "Estoque",
-                    tabBarIcon: ({ color }) => <FontAwesome name="square" size={28} color={color} />
-                }}
-            />
+
         </Tabs>
     )
 }
