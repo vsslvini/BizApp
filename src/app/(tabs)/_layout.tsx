@@ -20,11 +20,11 @@ export default function Layout() {
             />
             <Tabs.Screen name="estoque/index"
                 options={{
-                    title: "Produtos",
+                    title: "Estoque",
                     tabBarIcon: ({ color }) => <FontAwesome name="square" size={28} color={color} />
                 }}
             />
-            <Tabs.Screen name="produtosAdicionar/index"
+            <Tabs.Screen name="vendas/index"
                 options={{
                     title: "Vendas",
                     tabBarIcon: ({ color }) => <FontAwesome name="shopping-cart" size={28} color={color} />

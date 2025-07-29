@@ -6,7 +6,7 @@ import React from "react";
 
 import { colors, gradientes } from "@/utils/colors";
 
-export default function AdicionarProduto() {
+export default function Vendas() {
     const { setHeaderOptions } = useHeaderOptions();
     const router = useRouter();
 
@@ -25,7 +25,7 @@ export default function AdicionarProduto() {
     return (
         <View style={styles.container}>
             <TouchableOpacity>
-                <Text>Tela de Adicionar Produto</Text>
+                <Text>Tela de Produto</Text>
             </TouchableOpacity>
 
 

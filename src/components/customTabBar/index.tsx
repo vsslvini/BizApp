@@ -18,7 +18,7 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
         switch (routeName) {
             case "index":
                 return <FontAwesome name="home" size={28} color={color} />;
-            case "produtosAdicionar/index":
+            case "vendas/index":
                 return <FontAwesome name="shopping-cart" size={28} color={color} />;
             case "clientes/index":
                 return <FontAwesome name="user-circle" size={28} color={color} />;
@@ -33,7 +33,7 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
         switch (routeName) {
             case "index":
                 return gradientes.g1;
-            case "produtosAdicionar/index":
+            case "vendas/index":
                 return gradientes.g3;
             case "clientes/index":
                 return gradientes.g4;
