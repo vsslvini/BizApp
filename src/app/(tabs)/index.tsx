@@ -30,7 +30,7 @@ export default function Index() {
 
     const handleNextPage = () => {
         // Ao navegar, a próxima tela vai definir suas próprias opções de header.
-        router.push('/produtosAdicionar/')
+        router.push('produtos/adicionar')
     }
 
 

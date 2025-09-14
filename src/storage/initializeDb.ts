@@ -7,7 +7,7 @@ export async function InitializeDb(database: SQLiteDatabase) {
           id INTEGER PRIMARY KEY AUTOINCREMENT,  
           nome TEXT NOT NULL,
           precoCusto FLOAT NOT NULL,
-          prcoVenda FLOAT NOT NULL,
+          precoVenda FLOAT NOT NULL,
           quantidadeEstoque INTEGER NOT NULL
         );
         CREATE TABLE IF NOT EXISTS clientes (
@@ -31,7 +31,7 @@ export async function InitializeDb(database: SQLiteDatabase) {
           produtoId INTEGER NOT NULL,
           uantidade INTEGER NOT NULL,
           precoUnitarioVenda REAL NOT NULL,
-          FOREIGN KEY (vendaId) REFERENCES vendas(id),
+          FOREIGN KEY (vendaId) REFERENCES venda(id),
           FOREIGN KEY (produtoId) REFERENCES produtos(id)
         );
         CREATE TABLE IF NOT EXISTS dividasPendencias (

@@ -20,10 +20,10 @@ export default function Layout() {
     })
 
 
-    useEffect(() => {
-        if (fontsLoaded) {
-        }
-    }, [fontsLoaded])
+    // useEffect(() => {
+    //     if (fontsLoaded) {
+    //     }
+    // }, [fontsLoaded])
 
     const onLayoutRootView = React.useCallback(async () => {
         if (fontsLoaded) {
@@ -47,7 +47,6 @@ export default function Layout() {
                         }}>
                             <Stack.Screen name="(tabs)" />
                             <Stack.Screen name="teste" />
-
                         </Stack>
                     </HeaderProvider>
                 </SafeAreaProvider>

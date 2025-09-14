@@ -14,7 +14,7 @@ export default function AdicionarProduto() {
         React.useCallback(() => {
             // Define as opções do header para a tela de "Adicionar Produto"
             setHeaderOptions({
-                title: "Novo Produto",
+                title: "Clientes",
                 subTitleConfirm: false,
                 nameIcon: "plus",
                 gradientColors: gradientes.g4,

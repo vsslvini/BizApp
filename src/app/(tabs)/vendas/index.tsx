@@ -14,7 +14,7 @@ export default function Vendas() {
         React.useCallback(() => {
             // Define as opções do header para a tela de "Adicionar Produto"
             setHeaderOptions({
-                title: "Novo Produto",
+                title: "Vendas",
                 subTitleConfirm: false,
                 gradientColors: gradientes.g3,
                 nextPage: false,
