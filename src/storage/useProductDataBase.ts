@@ -50,5 +50,42 @@ export function UseProductDataBase() {
         }
 
     }
-    return { create, searchByName }
+
+    async function update(data: ProductsDataBase) {
+
+        const statement = await database.prepareAsync(
+            "UPDATE produtos SET nome = $nome, precoCusto = $precoCusto, precoVenda = $precoVenda, quantidadeEstoque = $quantidadeEstoque WHERE id = $id"
+        )
+        try {
+
+            await statement.executeAsync({
+                $id: data.id,
+                $nome: data.nome,
+                $precoCusto: data.precoCusto,
+                $precoVenda: data.precoVenda,
+                $quantidadeEstoque: data.quantidadeEstoque
+            })
+
+        } catch (error) {
+            throw error
+        } finally {
+            // É uma boa prática finalizar o statement após o uso.
+            await statement.finalizeAsync();
+        }
+    }
+
+    async function remove(id: number) {
+        const statement = await database.prepareAsync(
+            "DELETE FROM produtos WHERE id = $id"
+        )
+        try {
+            await statement.executeAsync({ $id: id })
+
+        } catch (error) {
+            throw error
+        } finally {
+            await statement.finalizeAsync();
+        }
+    }
+    return { create, searchByName, update, remove }
 }
