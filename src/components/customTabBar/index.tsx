@@ -22,7 +22,7 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
                 return <FontAwesome name="shopping-cart" size={28} color={color} />;
             case "clientes/index":
                 return <FontAwesome name="user-circle" size={28} color={color} />;
-            case "inventory/index":
+            case "estoque/index":
                 return <FontAwesome name="inbox" size={28} color={color} />;
             default:
                 return <FontAwesome name="home" size={28} color={color} />;
@@ -37,7 +37,7 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
                 return gradientes.g3;
             case "clientes/index":
                 return gradientes.g4;
-            case "inventory/index":
+            case "estoque/index":
                 return gradientes.g2;
             default:
                 return gradientes.g1;
