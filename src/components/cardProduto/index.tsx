@@ -1,24 +1,33 @@
-import { Pressable, PressableProps, Text, View, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { Text, View, TouchableOpacity, TouchableOpacityProps, Image } from "react-native";
+import { styles } from "./style"; // Importando os estilos do arquivo separado
 
-type Props = PressableProps &  TouchableOpacityProps & {
+type Props = TouchableOpacityProps & {
     data: {
-        id: number,
-        nome: string,
-        precoCusto: number,
-        precoVenda: number,
-        quantidadeEstoque: number
+        id: number;
+        nome: string;
+        precoCusto: number;
+        precoVenda: number;
+        quantidadeEstoque: number;
     }
-
 }
+
+// Usaremos uma imagem de placeholder, já que não temos uma no banco
+const placeholderImage = 'https://via.placeholder.com/80';
 
 export function Produto({ data, ...rest }: Props) {
     return (
-        <TouchableOpacity {...rest}>
-            <View style={{ flexDirection: 'column', justifyContent: 'space-between', padding: 8, margin: 8, borderBottomWidth: 1, borderBottomColor: '#ccc' }}>
-                <Text>  Nome do produto: {data.nome}</Text>
-                <Text>  Quantidade: {data.quantidadeEstoque}  </Text>
-                <Text>  Preço de custo: {data.precoCusto}  </Text>
-                <Text>  Preço para venda: {data.precoVenda}  </Text>
+        <TouchableOpacity style={styles.cardContainer} {...rest}>
+            {/* <Image
+                source={{ uri: placeholderImage }}
+                style={styles.productImage}
+            /> */}
+            <View style={styles.textContainer}>
+                <Text style={styles.productName} numberOfLines={1}>{data.nome}</Text>
+                <Text style={styles.productPrice}>
+                    {`R$ ${parseFloat(String(data.precoVenda)).toFixed(2).replace('.', ',')}`}
+                </Text>
+                <Text style={styles.productStock}>{`Estoque: ${data.quantidadeEstoque}`}</Text>
             </View>
-        </TouchableOpacity>)
+        </TouchableOpacity>
+    )
 }
