@@ -51,5 +51,12 @@ export function useClienteDataBase() {
         return await database.getAllAsync<ClienteDataBase>("SELECT * FROM clientes ORDER BY nome ASC");
     }
 
-    return { create, update, remove, all };
+    // FUNÇÃO QUE ESTAVA FALTANDO
+    async function searchByName(name: string) {
+        const query = "SELECT * FROM clientes WHERE nome LIKE ?";
+        return await database.getAllAsync<ClienteDataBase>(query, `%${name}%`);
+    }
+
+    return { create, update, remove, all, searchByName }; // Adicionado searchByName ao retorno
 }
+

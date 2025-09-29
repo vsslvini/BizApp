@@ -4,6 +4,9 @@ import { LinearGradient, LinearGradientProps } from "expo-linear-gradient";
 
 
 const colors = {
+    gray: '#F3F4F6',
+    lightGray: '#D1D5DB',
+    darkGray: '#4B5563',
     white: '#FFFFFF',
     black: '#000000',
     primary: '#2563EB', // Azul primário

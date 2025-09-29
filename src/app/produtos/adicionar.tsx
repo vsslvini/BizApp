@@ -4,7 +4,7 @@ import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 
-import { UseProductDataBase } from "@/storage/useProdutoDataBase";
+import { useProdutoDataBase } from "@/storage/useProdutoDataBase";
 
 import { colors, gradientes } from "@/utils/colors";
 import CustomImput from "@/components/customInput";
@@ -21,7 +21,7 @@ export default function Vendas() {
     const [qtdEstoqueMinimo, setQtdEstoqueMinimo] = useState("")
     const [produtos, setProdutos] = useState([])
 
-    const productDatabase = UseProductDataBase();
+    const productDatabase = useProdutoDataBase();
 
 
     useFocusEffect(
@@ -47,9 +47,10 @@ export default function Vendas() {
 
 
             const response = await productDatabase.create({ nome: nomeProduto, precoCusto: Number(custoProduto), precoVenda: Number(precoVenda), quantidadeEstoque: Number(quantidadeEstoque) })
+            router.back();
+            console.log(response);
+            Alert.alert("Sucesso", "Produto adicionado com sucesso!")
 
-            Alert.alert("Produto cadastrado com sucesso, ID" + response.insertdRowId)
-            console
         }
         catch (error) {
             console.log(error)
