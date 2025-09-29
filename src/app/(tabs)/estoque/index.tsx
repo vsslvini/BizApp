@@ -1,26 +1,27 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, StatusBar } from "react-native";
 import { useFocusEffect } from "expo-router";
 import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 
 import { colors, gradientes } from "@/utils/colors";
-import { ProductsDataBase, UseProductDataBase } from "@/storage/useProductDataBase";
+import { useProdutoDataBase } from "@/storage/useProdutoDataBase";
+import type { ProdutoDataBase } from "@/storage/types";
 
 import { Produto } from "@/components/cardProduto";
 import CustomImput from "@/components/customInput";
+import { styles } from "./styles"; // Importando do arquivo de estilos da tela
 
 export default function Estoque() {
-    const productDatabase = UseProductDataBase();
+    const productDatabase = useProdutoDataBase();
     const { setHeaderOptions } = useHeaderOptions();
     const router = useRouter();
 
     const [search, setSearch] = useState("");
-    const [products, setProducts] = useState<ProductsDataBase[]>([]);
+    const [products, setProducts] = useState<ProdutoDataBase[]>([]);
 
     useFocusEffect(
         React.useCallback(() => {
-            // Define as opções do header para a tela de "Adicionar Produto"
             setHeaderOptions({
                 title: "Estoque",
                 subTitleConfirm: false,
@@ -30,28 +31,19 @@ export default function Estoque() {
                 routerHeaderOptions: handleNextPage
             });
             list();
-        }, [search]) // "search" é adicionado como dependência para atualizar a lista quando mudar
+        }, [search])
     );
 
     const handleNextPage = () => {
         router.push('produtos/adicionar')
     }
 
-    const handleEdit = (item: ProductsDataBase) => {
-        //router.push(`produtos/${item.id}`);
-        // Expo Router converte todos os parâmetros para string, então é bom garantir que sejam passados assim.
+    const handleEdit = (item: ProdutoDataBase) => {
         router.push({
             pathname: 'produtos/[id]',
-            params: {
-                id: item.id,
-                nome: item.nome,
-                precoCusto: item.precoCusto,
-                precoVenda: item.precoVenda,
-                quantidadeEstoque: item.quantidadeEstoque,
-            }
+            params: { ...item }
         });
     }
-
 
     async function list() {
         try {
@@ -65,22 +57,20 @@ export default function Estoque() {
 
     return (
         <View style={styles.container}>
-            {/* <Text style={{ fontFamily: 'Roboto_700Bold', marginBottom: 12 }}>Tela principal "Home"</Text> */}
-            <CustomImput placeholder="Pesquisar" onChangeText={setSearch} />
+            <StatusBar barStyle="dark-content" />
+            <Text style={styles.title}>Meus Produtos</Text>
+            <CustomImput
+                placeholder="Pesquisar..."
+                onChangeText={setSearch}
+                style={styles.searchInput} // Usando um estilo do arquivo
+            />
             <FlatList
                 data={products}
                 keyExtractor={(item) => String(item.id)}
                 renderItem={({ item }) => <Produto data={item} onPress={() => handleEdit(item)} />}
-                contentContainerStyle={{ gap: 16 }}
+                contentContainerStyle={styles.listContainer}
+                ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
             />
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16,
-        maxHeight: "92%"
-    }
-})

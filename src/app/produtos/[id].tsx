@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { gradientes } from "@/utils/colors";
 import CustomImput from "@/components/customInput";
 // import CustomButton from "@/components/customButton";
-import { UseProductDataBase } from "@/storage/useProductDataBase";
+import { UseProductDataBase } from "@/storage/useProdutoDataBase";
 
 
 export default function EditarProduto() {

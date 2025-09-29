@@ -4,7 +4,7 @@ import { useHeaderOptions } from "@/contexts/contextCustomHeader";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 
-import { UseProductDataBase } from "@/storage/useProductDataBase";
+import { UseProductDataBase } from "@/storage/useProdutoDataBase";
 
 import { colors, gradientes } from "@/utils/colors";
 import CustomImput from "@/components/customInput";
