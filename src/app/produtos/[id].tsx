@@ -7,14 +7,14 @@ import React, { useEffect, useState } from "react";
 import { gradientes } from "@/utils/colors";
 import CustomImput from "@/components/customInput";
 // import CustomButton from "@/components/customButton";
-import { UseProductDataBase } from "@/storage/useProdutoDataBase";
+import { useProdutoDataBase } from "@/storage/useProdutoDataBase";
 
 
 export default function EditarProduto() {
     const router = useRouter();
     const { setHeaderOptions } = useHeaderOptions();
     const params = useLocalSearchParams();
-    const productDatabase = UseProductDataBase();
+    const productDatabase = useProdutoDataBase();
 
     // Estados para controlar os valores dos inputs
     const [nomeProduto, setNomeProduto] = useState("");

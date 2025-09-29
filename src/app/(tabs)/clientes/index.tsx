@@ -7,7 +7,7 @@ import { useClienteDataBase } from "@/storage/useClienteDataBase";
 import type { ClienteDataBase } from "@/storage/types";
 import { gradientes } from "@/utils/colors";
 
-import { Cliente } from "@/components/cardCliente/index"; // Você precisará criar este componente, similar ao cardProduto
+import { Cliente } from "@/components/cardCliente";
 import CustomImput from "@/components/customInput";
 import { styles } from "./styles";
 
@@ -19,15 +19,12 @@ export default function Clientes() {
     const [search, setSearch] = useState("");
     const [clientes, setClientes] = useState<ClienteDataBase[]>([]);
 
-    // A função principal que carrega os clientes
     const listClients = useCallback(async () => {
         try {
-            // Se houver texto na busca, pesquisa por nome, senão, busca todos
             const response = search.trim().length > 0
                 ? await clientDatabase.searchByName(search)
                 : await clientDatabase.all();
 
-            // Lógica principal: se não houver clientes, navega para a tela de adicionar
             if (response.length === 0 && search.trim().length === 0) {
                 router.push('clientes/adicionar');
             } else {
@@ -36,7 +33,7 @@ export default function Clientes() {
         } catch (error) {
             console.log(error);
         }
-    }, [search]); // Recria a função se 'search' mudar
+    }, [search]);
 
     useFocusEffect(
         useCallback(() => {
@@ -44,23 +41,24 @@ export default function Clientes() {
                 title: "Clientes",
                 subTitleConfirm: false,
                 nameIcon: "plus",
-                gradientColors: gradientes.g2, // Pode ajustar a cor
+                gradientColors: gradientes.g4,
                 nextPage: true,
                 routerHeaderOptions: handleNextPage
             });
-            listClients(); // Executa a busca
-        }, [listClients]) // Executa o efeito se listClients mudar
+            listClients();
+        }, [listClients])
     );
 
     const handleNextPage = () => {
         router.push('clientes/adicionar');
     }
 
+    // AQUI ESTÁ A LÓGICA CORRETA PARA EDITAR
+    // Passa todos os dados do cliente para a próxima tela
     const handleEdit = (item: ClienteDataBase) => {
-        // Lógica para editar o cliente, similar à de produtos
         router.push({
-            pathname: 'clientes/[id]', // Supondo que você criará uma tela de edição
-            params: { ...item }
+            pathname: `clientes/${item.id}`, // Navega para a rota dinâmica
+            params: { ...item } // Envia todos os dados do item como parâmetros
         });
     }
 
@@ -77,7 +75,7 @@ export default function Clientes() {
             <FlatList
                 data={clientes}
                 keyExtractor={(item) => String(item.id)}
-                // Você precisará de um componente <Cliente /> similar ao seu <Produto />
+                // O onPress agora chama handleEdit, passando o item completo
                 renderItem={({ item }) => <Cliente data={item} onPress={() => handleEdit(item)} />}
                 contentContainerStyle={styles.listContainer}
                 ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
@@ -85,3 +83,4 @@ export default function Clientes() {
         </View>
     )
 }
+
